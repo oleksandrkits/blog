@@ -4,7 +4,7 @@ class BloggsController < ApplicationController
   # GET /bloggs
   # GET /bloggs.json
   def index
-    @bloggs = Blogg.all
+    @bloggs = Blogg.limit(1)
   end
 
   # GET /bloggs/1

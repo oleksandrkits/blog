@@ -1,10 +1,10 @@
 class BloggsController < ApplicationController
-  before_action :set_blogg, only: [:show, :edit, :update, :destroy]
+  before_action :set_blogg, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   # GET /bloggs
   # GET /bloggs.json
   def index
-    @bloggs = Blogg.limit(1)
+    @bloggs = Blogg.all
   end
 
   # GET /bloggs/1
@@ -61,10 +61,20 @@ class BloggsController < ApplicationController
     end
   end
 
+  def toggle_status
+    if @blogg.draft?
+      @blogg.published!
+    elsif
+    @blogg.draft!
+    end
+
+    redirect_to bloggs_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blogg
-      @blogg = Blogg.find(params[:id])
+      @blogg = Blogg.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

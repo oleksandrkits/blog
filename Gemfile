@@ -65,3 +65,4 @@ gem 'pg'
 gem 'faker'
 
 gem 'friendly_id'
+gem 'devise', '~> 4.5'
